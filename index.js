@@ -14,6 +14,9 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/post.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -56,5 +59,7 @@ mongoose
   .connect(process.env.URI)
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port ${PORT}`));
+    //User.insertMany(users);
+    //Post.insertMany(posts);
   })
   .catch((err) => console.error(err));
